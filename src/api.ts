@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import cors from 'cors'
 import bodyParser from 'body-parser'
 import { nanoid } from 'nanoid'
 
@@ -8,6 +9,7 @@ import Maze from './Maze'
 
 const router = Router()
 
+router.use(cors())
 router.use(bodyParser.json())
 
 router.get('/games/:id', async ({ params: { id } }, res) => {
