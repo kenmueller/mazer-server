@@ -18,15 +18,15 @@ export default class Maze {
 		
 		let wallIndex = 0
 		
-		for (let i = 0; i < rows; i++)
-			for (let j = 0; j < columns; j++) {
-				this.cells[i][j] = { up: true, right: true, down: true, left: true }
+		for (let row = 0; row < rows; row++)
+			for (let column = 0; column < columns; column++) {
+				this.cells[row][column] = { up: true, right: true, down: true, left: true }
 				
-				if (i < rows - 1)
-					this.walls[wallIndex++] = { row: i, column: j, isHorizontal: true }
+				if (row < rows - 1)
+					this.walls[wallIndex++] = { row, column, isHorizontal: true }
 				
-				if (j < columns - 1)
-					this.walls[wallIndex++] = { row: i, column: j, isHorizontal: false }
+				if (column < columns - 1)
+					this.walls[wallIndex++] = { row, column, isHorizontal: false }
 			}
 	}
 	
