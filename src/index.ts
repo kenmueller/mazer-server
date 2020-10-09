@@ -3,18 +3,13 @@ import { createServer } from 'http'
 import IO from 'socket.io'
 
 import api from './api'
+import Player from './models/Player'
 
 const app = express().use(api)
 const http = createServer(app)
 const io = IO(http)
 
-io.on('connect', socket => {
-	console.log('Connect')
-	
-	socket.on('disconnect', () => {
-		console.log('Disconnect')
-	})
-})
+io.on('connect', socket => new Player(socket))
 
 ;(async () => {
 	const port = process.env.PORT ?? 5000
